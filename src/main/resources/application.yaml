@@ -1,0 +1,23 @@
+spring:
+  config:
+    import: optional:classpath:.env[.properties]
+  application:
+    name: userservice
+  datasource:
+    url: jdbc:mysql://localhost:3307/user_service?useTimezone=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: ${ENV_ROOT_USER}
+    password: ${ENV_ROOT_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  threads:
+    virtual:
+      enabled: true
+  web:
+    error:
+      include-stacktrace: never
+
+server:
+  servlet:
+    context-path: /
