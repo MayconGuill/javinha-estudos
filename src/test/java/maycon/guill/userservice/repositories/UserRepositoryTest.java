@@ -1,6 +1,8 @@
 package maycon.guill.userservice.repositories;
 
 import maycon.guill.userservice.commons.UserUtils;
+import maycon.guill.userservice.config.IntegrationTestConfiguration;
+import maycon.guill.userservice.config.TestcontainersConfiguration;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,7 @@ import org.springframework.context.annotation.Import;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(UserUtils.class)
-class UserRepositoryTest {
+class UserRepositoryTest extends IntegrationTestConfiguration {
     @Autowired
     private UserRepository repository;
 
@@ -26,6 +28,6 @@ class UserRepositoryTest {
         var userSaved = repository.save(userToSave);
 
         Assertions.assertThat(userSaved).hasNoNullFieldsOrProperties();
-        Assertions.assertThat(userSaved.getId()).isEqualTo(1L);
+        Assertions.assertThat(userSaved.getId()).isNotNull().isPositive();
     }
 }

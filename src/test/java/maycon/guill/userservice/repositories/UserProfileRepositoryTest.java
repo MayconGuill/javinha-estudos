@@ -1,6 +1,8 @@
 package maycon.guill.userservice.repositories;
 
 import maycon.guill.userservice.commons.UserUtils;
+import maycon.guill.userservice.config.IntegrationTestConfiguration;
+import maycon.guill.userservice.config.TestcontainersConfiguration;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,7 @@ import org.springframework.test.context.jdbc.Sql;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(UserUtils.class)
-class UserProfileRepositoryTest {
+class UserProfileRepositoryTest extends IntegrationTestConfiguration {
     @Autowired
     private UserProfileRepository repository;
 

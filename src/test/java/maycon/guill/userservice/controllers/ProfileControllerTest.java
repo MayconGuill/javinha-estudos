@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.List;
 import java.util.stream.Stream;
 
-@WebMvcTest(ProfileController.class)
+@WebMvcTest(controllers = ProfileController.class)
 @ComponentScan(basePackages = {"maycon.guill.userservice"})
 class ProfileControllerTest {
 
