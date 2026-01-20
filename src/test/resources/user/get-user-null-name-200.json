@@ -1,14 +1,1 @@
-[
-  {
-    "id": 1,
-    "firstName": "Saitama",
-    "lastName": "Careca de Capa",
-    "email": "saitama@gmail.com"
-  },
-  {
-    "id": 2,
-    "firstName": "Genus",
-    "lastName": "Robo Aprendiz",
-    "email": "genus@gmail.com"
-  }
-]
+[{"id":1,"firstName":"Saitama","lastName":"Careca de Capa","email":"saitama@gmail.com"},{"id":2,"firstName":"Genus","lastName":"Robo Aprendiz","email":"genus@gmail.com"}]

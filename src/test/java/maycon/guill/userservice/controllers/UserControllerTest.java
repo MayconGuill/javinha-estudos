@@ -15,13 +15,13 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -43,13 +43,13 @@ class UserControllerTest {
     @Autowired
     private FileUtils fileUtils;
 
-    @MockitoBean
+    @MockBean
     private UserRepository repository;
 
-    @MockitoBean
+    @MockBean
     private ProfileRepository profileRepository;
 
-    @MockitoBean
+    @MockBean
     private UserProfileRepository userProfileRepository;
 
     private UserUtils userUtils;
@@ -123,7 +123,7 @@ class UserControllerTest {
     void findAll_ReturnAllUsers_WhenFirstNameIsNotFound() throws Exception {
         BDDMockito.when(repository.findAll()).thenReturn(Collections.emptyList());
 
-        var response = fileUtils.readResourceFile("user/get-user-x-name-404.json");
+        var response = fileUtils.readResourceFile("user/get-user-x-name-200.json");
         var name = "x";
 
         mockMvc.perform(MockMvcRequestBuilders

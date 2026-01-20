@@ -15,10 +15,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -37,13 +37,13 @@ class ProfileControllerTest {
     @Autowired
     private FileUtils fileUtils;
 
-    @MockitoBean
+    @MockBean
     private ProfileRepository repository;
 
-    @MockitoBean
+    @MockBean
     private UserRepository userRepository;
 
-    @MockitoBean
+    @MockBean
     private UserProfileRepository userProfileRepository;
 
     private ProfileUtils profileUtils;
@@ -63,7 +63,7 @@ class ProfileControllerTest {
     void findAll_ReturnAllProfiles_WhenSuccessful() throws Exception {
         BDDMockito.when(repository.findAll()).thenReturn(profileList);
 
-        var response = fileUtils.readResourceFile("profile/get-profile-1-id-200.json");
+        var response = fileUtils.readResourceFile("profile/get-profile-200.json");
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get(URL)
